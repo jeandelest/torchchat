@@ -46,7 +46,7 @@ $PIP_EXECUTABLE install -r requirements.txt --extra-index-url https://download.p
 # NOTE: If a newly-fetched version of the executorch repo changes the value of
 # NIGHTLY_VERSION, you should re-run this script to install the necessary
 # package versions.
-NIGHTLY_VERSION=dev20240710
+NIGHTLY_VERSION=dev20240727
 
 # Uninstall triton, as nightly will depend on pytorch-triton, which is one and the same
 $PIP_EXECUTABLE uninstall -y triton
@@ -73,7 +73,7 @@ $PIP_EXECUTABLE install --extra-index-url "${TORCH_NIGHTLY_URL}" \
 
 # For torchao need to install from github since nightly build doesn't have macos build.
 # TODO: Remove this and install nightly build, once it supports macos
-$PIP_EXECUTABLE install git+https://github.com/pytorch/ao.git@d36de1b144b73bf753bd082109c2b5d0141abd5b
+$PIP_EXECUTABLE install git+https://github.com/pytorch/ao.git@d477c0e59b458b5617dcb3e999290a87df3070d8
 if [[ -x "$(command -v nvidia-smi)" ]]; then
   $PYTHON_EXECUTABLE scripts/patch_triton.py
 fi
